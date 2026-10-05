@@ -2,7 +2,7 @@
 
 ## dispositivos lowtech e interfaces interactivas 
 
-**Equipo:** [Nombre del equipo]  
+**Equipo:** Pulso  
 **Problematica:** [Nombre breve del desafío]  
 
 ![Foto del equipo](imagenes/S01/foto-equipo.jpg)
