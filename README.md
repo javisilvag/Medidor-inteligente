@@ -5,7 +5,7 @@
 **Equipo:** Pulso  
 **Problematica:** [Nombre breve del desafío]  
 
-![Foto del equipo](imagenes/S01/Foto-Equipo-Javi.jpg)
+![Foto del equipo](imagenes/S01/Foto-equipo-Marti.jpeg)
 
 ## Descripción
 
