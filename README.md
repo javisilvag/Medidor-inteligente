@@ -35,5 +35,5 @@ Es un dispositivo interactivo de cuidado botánico diseñado para ayudar a las p
 ## Índice de la bitácora
 
 - [S01 - Entrega 01](Bitacora/S01)
-- [S02 - Entrega 02](bitacora/S02.md)
+- [S02 - Entrega 02](Bitacora/S02)
 - [S03 - Entrega 03](bitacora/S03.md)
