@@ -1,35 +1,39 @@
-# S01 - Equipo y desafío
+Fenómeno
+El fenómeno que identificamos corresponde a la dificultad de mantener un control adecuado del riego de las plantas durante períodos de ausencia del usuario. Cuando una persona viaja o está varios días fuera de su casa, no tiene la posibilidad de observar directamente el estado de sus plantas ni determinar si necesitan o no agua.
+Esta situación puede generar que la falta de agua provoque un deterioro progresivo a planta, o que el exceso de riego, mantenga la tierra saturada y puede afectar negativamente sus raíces.
+El problema además de permitirnos saber si la planta ya fue regada, nos ayudará a conocer las condiciones reales de humedad del suelo mientras el usuario se encuentra ausente. A partir de esto, surge la oportunidad de desarrollar un sistema que permita transformar una condición que es percibida de manera visual o por tacto en una información directa y que sea fácil de interpretar
+Contexto / usuario
+El proyecto está dirigido principalmente a personas que tienen plantas en sus casas y que deben ausentarse durante períodos de tiempo, ya sea por viajes, vacaciones u otras actividades.
+Durante esos periodos, el usuario no puede realizar una supervisión de sus plantas siendo casual que se deba recurrir a familiares o amigos. 
+El dispositivo buscará responder a esta situación mediante una supervisión autónoma de la humedad del suelo, lo que permitiría que el usuario pueda conocer el estado de sus plantas sin necesidad de encontrarse físicamente en el lugar.
+Se considera relevante que la interacción sea simple, directa y comprensible para el usuario, buscamos que el sistema sea capaz de traducir la información obtenida en estados fáciles de reconocer por ejemplo: 
+Falta de agua: la tierra está demasiado seca.
+Estado adecuado: la humedad se encuentra dentro de un rango normal.
+Exceso de agua:  la tierra tiene un nivel de humedad demasiado alto.
+De esta manera, el dispositivo funciona como un medio de supervisión a distancia, reduciendo la incertidumbre del usuario por sus plantas durante su ausencia.
 
-**Fecha:** [dd-mm-aaaa]  
-**Participantes:** [Nombres]  
+Variable
+La variable principal es medir la humedad del suelo, obtenida mediante un sensor de humedad de suelo, que permanecerá instalado directamente en la tierra durante el período de ausencia del usuario.
+La información entregada por el sensor será interpretada mediante rangos de humedad previamente establecidos, permitiendo clasificar el estado del suelo en tres condiciones principales:
+Estado: seco, Condición del suelo:Humedad bajo el rango establecido, Interpretación:La planta podría necesitar agua
+Estado: Adecuado, Condición del suelo:Humedad dentro del rango establecido, Interpretación:Condición favorable
+Estado: Exceso, Condición del suelo:Humedad sobre el rango establecido, Interpretación:Posible exceso de riego
 
-## Objetivo de la sesión
+Es importante considerar que estos rangos se adecuarán a un tipo de planta y según sus necesidades.
 
-Rrealizar una primera interpretación del desafío a desarrollar.
+Primera hipótesis de dispositivo
+La primera hipótesis consiste en desarrollar un dispositivo portátil de monitoreo de humedad en tierra para plantas, estará compuesto por un sensor que se insertará en la tierra y una pantalla visualización que comunicará al usuario el estado del suelo.
+El sistema estaría compuesto por:
+Un sensor de humedad de suelo que estará ubicado directamente en la tierra realizando mediciones constantemente
+Una placa con Wi-Fi y Bluetooth la cual estará encargada de procesar la información obtenida por el sensor y gestionar la comunicación del sistema.
+Transmisión de datos: permitiría enviar o comunicar la información registrada por el sensor, dependiendo de la arquitectura final que se defina.
+Una pantalla TFT que será utilizada como interfaz visual para representar el estado de humedad de una manera simple y rápida.
+ejemplo: 
+Sensor → medición de humedad → procesamiento → interpretación del estado → transmisión → visualización del estado.
+De esta manera la pantalla mostrará el porcentaje de humedad y traducirá el dato en una respuesta visual que pueda comprenderse rápidamente,lo que podría ser un indicador o un símbolo.
+La intención es que el usuario pueda monitorear su planta durante su viaje y obtener una respuesta inmediata sobre su estado, sin necesidad de encontrarse físicamente junto a ella ni interpretar datos técnicos que le sean complicados.
 
-### Lo que sabemos
-
-- [Evidencia o antecedente 1]
-- [Evidencia o antecedente 2]
-
-### Lo que todavía no sabemos
-
-- [Pregunta 1]
-- [Pregunta 2]
-
-### Supuestos que debemos comprobar
-
-- [Supuesto 1]
-- [Supuesto 2]
+Concepto general del proyecto
+“Diseñar un sistema de monitoreo de humedad que permita a personas que se encuentran fuera de su hogar conocer el estado hídrico de sus plantas de manera simple, remota y comprensible.”
 
 
-## Reflexión breve
-
-**¿Qué fue fácil?**  
-[Respuesta.]
-
-**¿Qué fue difícil o generó desacuerdo?**  
-[Respuesta.]
-
-**¿Qué necesitamos resolver para la próxima entrega?**  
-[Respuesta.]
