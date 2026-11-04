@@ -42,6 +42,6 @@ El problema ocurre principalmente en el contexto doméstico, donde las plantas r
 
 ## Índice de la bitácora
 
-- [S01 - Entrega 01](Bitacora/S01)
-- [S02 - Entrega 02](Bitacora/S02)
+- [S01 - Entrega 01](Bitacora/S01.md)
+- [S02 - Entrega 02](Bitacora/S02.md)
 - [S03 - Entrega 03](bitacora/S03.md)
