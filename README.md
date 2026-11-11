@@ -29,7 +29,7 @@ El proyecto está pensado principalmente para cualquier persona que se encuentre
 
 ## Índice de la bitácora
 
-- [S01 - Entrega 01](bitacora/S01.md)
-- [S02 - Entrega 02](bitacora/S02.md)
-- [S03 - Entrega 03](bitacora/S03.md)
-- [S04 - Entrega 04](bitacora/S04.md)
+- [S01 - Entrega 01](Bitacora/S01.md)
+- [S02 - Entrega 02](Bitacora/S02.md)
+- [S03 - Entrega 03](Bitacora/S03.md)
+- [S04 - Entrega 04](Bitacora/S04.md)
