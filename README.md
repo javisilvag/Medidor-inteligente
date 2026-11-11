@@ -29,6 +29,8 @@ El proyecto está pensado principalmente para cualquier persona que se encuentre
 
 ## Índice de la bitácora
 
+## Índice de la bitácora
+
 - [S01 - Entrega 01](Bitacora/S01.md)
 - [S02 - Entrega 02](Bitacora/S02.md)
 - [S03 - Entrega 03](Bitacora/S03.md)
