@@ -32,3 +32,4 @@ El proyecto está pensado principalmente para cualquier persona que se encuentre
 - [S01 - Entrega 01](bitacora/S01.md)
 - [S02 - Entrega 02](bitacora/S02.md)
 - [S03 - Entrega 03](bitacora/S03.md)
+- [S04 - Entrega 04](bitacora/S04.md)
