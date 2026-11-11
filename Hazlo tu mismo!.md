@@ -20,13 +20,47 @@ Para que el dispositivo sea compacto y fácil de transportar, eliminamos la plac
 * 🔌 Cables jumper **Hembra - Hembra** (pantalla)
 * 🔌 Cables jumper **Hembra - Macho** (sensor)
 
-### 📌 Tabla de conexiones (Pinout)
+### 📌 Tablas de Conexiones (Pinout)
 
-| Componente | Pin del Componente | Pin en ESP32 | Tipo de Cable |
+#### Conexión Pantalla TFT GC9A01A ↔ ESP32-S3 SuperMini
+| Pin Pantalla TFT | Función / Descripción | Pin ESP32-S3 SuperMini | Tipo de Cable |
 |---|---|---|---|
-| **Pantalla TFT** | VCC / GND / SCL / SDA... | *(Indicar pines)* | Hembra - Hembra |
-| **Sensor HD-38** | VCC / GND / A0 | *(Indicar pines)* | Hembra - Macho |
+| **VCC** | Alimentación (5V) | **5V** | Hembra - Hembra |
+| **GND** | Tierra / Polo negativo | **GND** | Hembra - Hembra |
+| **SCL** | Reloj SPI (Clock) | **GPIO 12** | Hembra - Hembra |
+| **SDA** | Datos SPI (MOSI) | **GPIO 11** | Hembra - Hembra |
+| **DC** | Selección Data / Comando | **GPIO 6** | Hembra - Hembra |
+| **CS** | Selección de Chip (Chip Select) | **GPIO 10** | Hembra - Hembra |
+| **RST** | Reinicio (Reset) | **GPIO 9** | Hembra - Hembra |
 
+#### Conexión Sensor HD-38 ↔ ESP32-S3 SuperMini
+| Pin Módulo HD-38 | Función / Descripción | Pin ESP32-S3 SuperMini | Tipo de Cable |
+|---|---|---|---|
+| **- (GND)** | Tierra / Polo negativo | **GND** | Hembra - Macho |
+| **+ (VCC)** | Alimentación (3.3V) | **3V3** | Hembra - Macho |
+| **AO** | Salida analógica (Humedad) | **GPIO AO** | Hembra - Macho |
+| **DO** | Salida digital | *(Libre / Sin conectar)* | - |
+
+<pre>
+ESP32-S3 SuperMini                  PANTALLA TFT GC9A01A
+┌────────────────────┐               ┌────────────────────┐
+│                 5V ├──────────────►│ VCC                │
+│                GND ├──────┬───────►│ GND                │
+│            GPIO 12 ├──────┼───────►│ SCL                │
+│            GPIO 11 ├──────┼───────►│ SDA                │
+│             GPIO 6 ├──────┼───────►│ DC                 │
+│            GPIO 10 ├──────┼───────►│ CS                 │
+│             GPIO 9 ├──────┼───────►│ RST                │
+│                3V3 ├───┐  │        └────────────────────┘
+│            GPIO AO ├──┐│  │
+└────────────────────┘  ││  │        SENSOR HD-38
+                        ││  │        ┌────────────────────┐
+                        ││  └───────►│ - (GND)            │
+                        │└──────────►│ + (VCC)            │
+                        └───────────►│ AO                 │
+                                     │ DO (Libre)         │
+                                     └────────────────────┘
+</pre>
 <img src="../Imagenes%20Evidencias/circuito-compacto.jpg" alt="Circuito compacto sin protoboard" width="350"/>
 
 > [!WARNING]
