@@ -68,11 +68,11 @@ Al cargar el código para mostrar las imágenes en la pantalla circular, revisa 
 2. **Prueba en maceta:** Comprueba que al meter el sensor en la tierra, la pantalla cambie automáticamente entre las caritas en Pixel Art y el porcentaje numérico según los 4 rangos establecidos.
 
 > [!TIP]
-> 🎥 **Ver demostración:**  
-> <a href="https://www.instagram.com/reel/DeSw9m6N9T9/" target="_blank">
->   <img src="../Imagenes%20Evidencias/Video%20demostracion.JPG" alt="Ver video en Instagram" width="250"/>
-> </a>  
-> *(Haz clic en la imagen para ver el video del prototipo respondiendo al nivel de agua)*
+> 🎥 **Prueba inicial con Arduino (Prototipo 1):**  
+> Esta demostración corresponde al **Prototipo 1**, donde utilizamos una placa Arduino para comprobar la lectura del sensor y verificar que todos los materiales estuvieran en buen estado antes de realizar la migración definitiva a la ESP32-S3 SuperMini.
+> 
+> [![Ver video en Instagram](Imagenes%20Evidencias/Video%20demostracion.JPG)](https://www.instagram.com/reel/DeSw9m6N9T9/)  
+> *(Haz clic en la imagen para abrir el Reel en Instagram ↗️)*
 
 ---
 
