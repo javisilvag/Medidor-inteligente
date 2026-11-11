@@ -117,6 +117,6 @@ Una vez que el circuito esté listo y funcionando correctamente, puedes guardar 
 * 📦 **Opción libre (Cualquier caja):** Puedes poner el circuito dentro de cualquier caja que tengas a mano en tu casa.
 * 🌻 **Opción impresión 3D (Recomendada):** Si prefieres algo a medida, puedes diseñar y crear tu propia impresión 3D para meter el artefacto (nosotras, por ejemplo, diseñamos una carcasa con forma de flor).
 
-<img src="../Imagenes%20Evidencias/Evidencia%205.jpg" alt="Render de la carcasa con forma de flor" width="350"/>
+[<img src="../Imagenes%20Evidencias/Evidencia%205.jpg" alt="Render de la carcasa con forma de flor" width="350"/>](https://github.com/user-attachments/assets/d262300f-91b0-463c-8c8f-ec3e6bab44b7)
 
 > 💡 **Requisito clave:** Lo único importante es que tu caja o carcasa deje visible la pantalla circular y permita que la sonda del sensor quede libre para clavarse en la tierra.
