@@ -126,3 +126,270 @@ Una vez que el circuito esté listo y funcionando correctamente, puedes guardar 
 [<img src="Imagenes%20Evidencias/Evidencia%205.jpg" alt="Render de la carcasa con forma de flor" width="350"/>](https://github.com/user-attachments/assets/d262300f-91b0-463c-8c8f-ec3e6bab44b7)
 
 > 💡 **Requisito clave:** Lo único importante es que tu caja o carcasa deje visible la pantalla circular y permita que la sonda del sensor quede libre para clavarse en la tierra.
+
+## 💻 5. Código Fuente (Arduino Uno y ESP32-S3)
+
+Aquí tienes los dos códigos que desarrollamos durante el proyecto: primero la versión de diagnóstico en **Arduino Uno** y luego el código definitivo en **ESP32-S3 SuperMini** con las animaciones en Pixel Art.
+
+<details>
+<summary><b>🧪 Ver Código 1: Prototipo 1 en Arduino Uno (Calibración, textos y barra de nivel)</b></summary>
+<br>
+
+En esta primera etapa conectamos el sensor **HD-38** y la pantalla circular **GC9A01A** a una placa **Arduino Uno**. Como la memoria del Arduino Uno no alcanza para almacenar imágenes pesadas en alta resolución, diseñamos una interfaz inicial basada en porcentajes, textos de estado con colores (`BAJO`, `OPTIMO`, `ALTO`, `EXCESO`) y una barra de progreso dinámica, calibrando el sensor entre `1023` (seco) y `240` (saturado en agua).
+
+> **Librerías necesarias en Arduino IDE:** `Adafruit GFX Library` y `Adafruit GC9A01A`.
+
+<pre>
+#include <SPI.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_GC9A01A.h>
+
+// Definición de pines para la pantalla TFT en Arduino Uno
+#define TFT_RST  8
+#define TFT_DC   9
+#define TFT_CS   10
+
+// Pin del sensor de humedad analógico (HD-38)
+#define PIN_SENSOR A0 
+
+Adafruit_GC9A01A tft(TFT_CS, TFT_DC, TFT_RST);
+
+unsigned long ultimoTiempo = 0;
+const long intervalo = 1000; // Lee el sensor cada 1 segundo
+
+// =========================================================================
+// VALORES DE CALIBRACIÓN REALES DE TU SENSOR
+// =========================================================================
+const int VALOR_SECO   = 1023; // 1023 = 0% Humedad (Aire / Seco)
+const int VALOR_MOJADO = 240;  // 240  = 100% Humedad (Saturado / Mojado)
+
+void setup() {
+  Serial.begin(9600);
+
+  // Inicializar pantalla
+  tft.begin();
+  tft.setRotation(0);
+  tft.fillScreen(GC9A01A_BLACK);
+
+  // Dibujar elementos fijos
+  tft.drawCircle(120, 120, 118, GC9A01A_WHITE);
+  tft.drawCircle(120, 120, 115, GC9A01A_DARKGREY);
+  
+  tft.setTextColor(GC9A01A_WHITE);
+  tft.setTextSize(2);
+  tft.setCursor(65, 45);
+  tft.println("HUMEDAD");
+}
+
+void loop() {
+  if (millis() - ultimoTiempo >= intervalo) {
+    ultimoTiempo = millis();
+
+    int lecturaRaw = analogRead(PIN_SENSOR);
+    
+    // Mapeo preciso con tus valores reales
+    int porcentaje = map(lecturaRaw, VALOR_SECO, VALOR_MOJADO, 0, 100);
+    porcentaje = constrain(porcentaje, 0, 100);
+
+    // Muestra por Monitor Serie para verificar
+    Serial.print("Lectura A0: ");
+    Serial.print(lecturaRaw);
+    Serial.print(" -> ");
+    Serial.print(porcentaje);
+    Serial.println("%");
+
+    actualizarPantalla(porcentaje);
+  }
+}
+
+void actualizarPantalla(int humedad) {
+  uint16_t colorEstado;
+  String textoEstado = "";
+
+  // Rangos de humedad para tus plantas
+  if (humedad < 25) {
+    textoEstado = "BAJO (SECO)";
+    colorEstado = GC9A01A_RED;         // < 25%: Necesita riego urgente
+  } else if (humedad <= 65) {
+    textoEstado = "OPTIMO (OK)";
+    colorEstado = GC9A01A_GREEN;       // 25% - 65%: Humedad ideal
+  } else if (humedad <= 85) {
+    textoEstado = "ALTO (MOJADO)";
+    colorEstado = GC9A01A_BLUE;        // 66% - 85%: Recién regada
+  } else {
+    textoEstado = "EXCESO AGUA!";
+    colorEstado = GC9A01A_MAGENTA;     // > 85%: Posible encharcamiento
+  }
+
+  // 1. Limpiar áreas dinámicas para evitar parpadeos
+  tft.fillRect(40, 80, 160, 40, GC9A01A_BLACK);  
+  tft.fillRect(15, 130, 210, 30, GC9A01A_BLACK); 
+  tft.fillRect(40, 175, 160, 20, GC9A01A_BLACK); 
+
+  // 2. Dibujar Porcentaje
+  tft.setTextColor(GC9A01A_WHITE);
+  tft.setTextSize(4);
+  
+  if (humedad < 10) tft.setCursor(100, 85);
+  else if (humedad < 100) tft.setCursor(85, 85);
+  else tft.setCursor(70, 85);
+  
+  tft.print(humedad);
+  tft.setTextSize(2);
+  tft.print("%");
+
+  // 3. Dibujar Texto de Estado
+  tft.setTextColor(colorEstado);
+  tft.setTextSize(2);
+  int offsetTexto = (240 - (textoEstado.length() * 12)) / 2;
+  tft.setCursor(offsetTexto, 135);
+  tft.print(textoEstado);
+
+  // 4. Dibujar Barra de Nivel
+  int anchoBarra = map(humedad, 0, 100, 0, 150);
+  tft.drawRect(45, 175, 150, 15, GC9A01A_WHITE);
+  tft.fillRect(45, 175, anchoBarra, 15, colorEstado);
+}
+</pre>
+
+### 💻 Código ESP32
+Este es nuestro código definitivo para la **ESP32-S3 SuperMini**. En lugar de imágenes estáticas, diseñamos animaciones de **3 fotogramas (*frames*)** por cada estado emocional (`seco`, `optimo`, `alto` y `exceso`) que se reproducen cada `200 ms` mediante renderizado ultra rápido por SPI (`writePixels`).
+
+> [!NOTE]
+> **Detalles técnicos clave en este código:**
+> - **Memoria:** Requiere activar el esquema de partición **Huge APP** en Arduino IDE para almacenar los 12 fotogramas en `PROGMEM` (240×240 px cada uno).
+> - **Corrección de color:** Incluye `tft.invertDisplay(true)` para calibrar los colores reales de la pantalla circular GC9A01A.
+> - **Pinout del sensor:** Usa `GPIO 1` como lectura analógica y `GPIO 4` configurado en `LOW` como tierra (`GND`) dedicada para el sensor HD-38.
+
+<details>
+<summary><b>🌸 Ver Código ESP32-S3 SuperMini (.ino)</b></summary>
+<br>
+
+```cpp
+#include <SPI.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_GC9A01A.h>
+
+// Definición de pines Pantalla TFT GC9A01A <-> ESP32-S3 SuperMini
+#define TFT_SCL  12
+#define TFT_SDA  11
+#define TFT_DC    6
+#define TFT_CS   10
+#define TFT_RST   9
+
+// Pines Sensor de Humedad HD-38
+#define SENSOR_PIN 1  // Lectura analógica (AO)
+#define SENSOR_GND 4  // Tierra virtual dedicada (GND)
+
+Adafruit_GC9A01A tft = Adafruit_GC9A01A(TFT_CS, TFT_DC, TFT_RST);
+
+// =========================================================================
+// ARREGLOS DE IMÁGENES PIXEL ART (12 frames de 240x240 px en PROGMEM)
+// Nota: Se omiten los valores hexadecimales por extensión; insertar aquí
+// los arreglos generados con FileToCArray / image2cpp.
+// =========================================================================
+
+// --- IMÁGENES PARA ESTADO "SECO" (3 frames) ---
+static const uint16_t seco1[] PROGMEM = { /* Agregar código imagen */ };
+static const uint16_t seco2[] PROGMEM = { /* Agregar código imagen */ };
+static const uint16_t seco3[] PROGMEM = { /* Agregar código imagen */ };
+const uint16_t* animSeco[3] = {seco1, seco2, seco3};
+
+// --- IMÁGENES PARA ESTADO "OPTIMO" (3 frames) ---
+const uint16_t optimo1[] PROGMEM = { /* Agregar código imagen */ };
+const uint16_t optimo2[] PROGMEM = { /* Agregar código imagen */ };
+const uint16_t optimo3[] PROGMEM = { /* Agregar código imagen */ };
+const uint16_t* animOptimo[3] = {optimo1, optimo2, optimo3};
+
+// --- IMÁGENES PARA ESTADO "ALTO" (3 frames) ---
+const uint16_t alto1[] PROGMEM = { /* Agregar código imagen */ };
+const uint16_t alto2[] PROGMEM = { /* Agregar código imagen */ };
+const uint16_t alto3[] PROGMEM = { /* Agregar código imagen */ };
+const uint16_t* animAlto[3] = {alto1, alto2, alto3};
+
+// --- IMÁGENES PARA ESTADO "EXCESO" (3 frames) ---
+const uint16_t exceso1[] PROGMEM = { /* Agregar código imagen */ };
+const uint16_t exceso2[] PROGMEM = { /* Agregar código imagen */ };
+const uint16_t exceso3[] PROGMEM = { /* Agregar código imagen */ };
+const uint16_t* animExceso[3] = {exceso1, exceso2, exceso3};
+
+int frameActual = 0;
+unsigned long ultimoRefresco = 0;
+const int intervaloFrame = 200; // 200ms = velocidad pausada de animación
+
+void dibujaImagenUltraRapido(const uint16_t* bitmap) {
+  tft.startWrite();
+  tft.setAddrWindow(0, 0, 240, 240);
+  tft.writePixels((uint16_t*)bitmap, 57600);
+  tft.endWrite();
+}
+
+void setup() {
+  pinMode(SENSOR_GND, OUTPUT);
+  digitalWrite(SENSOR_GND, LOW); 
+
+  Serial.begin(115200);
+
+  // Reinicio manual de la pantalla TFT
+  pinMode(TFT_RST, OUTPUT);
+  digitalWrite(TFT_RST, HIGH);
+  delay(10);
+  digitalWrite(TFT_RST, LOW);
+  delay(20);
+  digitalWrite(TFT_RST, HIGH);
+  delay(50);
+
+  // Inicializar bus SPI a 80 MHz
+  SPI.begin(TFT_SCL, -1, TFT_SDA, TFT_CS);
+  tft.begin(80000000); 
+  tft.setRotation(2); 
+  tft.invertDisplay(true); // Corrección de inversión de color
+}
+
+void loop() {
+  unsigned long tiempoActual = millis();
+
+  if (tiempoActual - ultimoRefresco >= intervaloFrame) {
+    ultimoRefresco = tiempoActual;
+
+    int lecturaRaw = analogRead(SENSOR_PIN);
+    // 1400 permite que al sumergirse en agua sobrepase el 75% y active "EXCESO"
+    int porcentaje = map(lecturaRaw, 4095, 1400, 0, 100);
+    porcentaje = constrain(porcentaje, 0, 100);
+
+    const uint16_t* ptrImagen = NULL;
+
+    // Selección de estado y fotograma actual
+    if (porcentaje < 20) { 
+      if (frameActual == 0) ptrImagen = seco1;
+      else if (frameActual == 1) ptrImagen = seco2;
+      else ptrImagen = seco3;
+    } 
+    else if (porcentaje < 50) { 
+      if (frameActual == 0) ptrImagen = optimo1;
+      else if (frameActual == 1) ptrImagen = optimo2;
+      else ptrImagen = optimo3;
+    } 
+    else if (porcentaje < 75) { 
+      if (frameActual == 0) ptrImagen = alto1;
+      else if (frameActual == 1) ptrImagen = alto2;
+      else ptrImagen = alto3;
+    } 
+    else { 
+      if (frameActual == 0) ptrImagen = exceso1;
+      else if (frameActual == 1) ptrImagen = exceso2;
+      else ptrImagen = exceso3;
+    }
+
+    if (ptrImagen != NULL) {
+      dibujaImagenUltraRapido(ptrImagen);
+    }
+
+    frameActual++;
+    if (frameActual > 2) {
+      frameActual = 0;
+    }
+  }
+
+  yield();
+}
