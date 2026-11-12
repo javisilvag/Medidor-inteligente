@@ -11,14 +11,14 @@ En esta guía te enseñamos cómo armar este dispositivo por tu cuenta, comparti
 
 ## 🛠️ 1. Componentes y Conexiones del Hardware
 
-Para que el dispositivo sea compacto y fácil de transportar, eliminamos la placa de pruebas (protoboard) y cambiamos la placa Arduino inicial por una **ESP32**.
+Para que el dispositivo sea compacto y fácil de transportar, eliminamos la placa de pruebas (protoboard) y cambiamos la placa Arduino inicial por una **ESP32-S3 SuperMini**.
 
 ### 🛒 Materiales necesarios
-* 🧠 **ESP32** (Placa microcontroladora)
-* 📺 **GC9A01A** (Pantalla circular TFT)
-* 🌾 **HD-38** (Sensor analógico de humedad de suelo)
-* 🔌 Cables jumper **Hembra - Hembra** (pantalla)
-* 🔌 Cables jumper **Hembra - Macho** (sensor)
+- 🧠 **ESP32-S3 SuperMini** (Placa microcontroladora)
+- 📺 **GC9A01A** (Pantalla circular TFT de 240×240 px)
+- 🌾 **HD-38** (Sensor analógico de humedad de suelo)
+- 🔌 Cables jumper **Hembra - Hembra** (pantalla)
+- 🔌 Cables jumper **Hembra - Macho** (sensor)
 
 ### 📌 Tablas de Conexiones (Pinout)
 
@@ -61,7 +61,8 @@ ESP32-S3 SuperMini                  PANTALLA TFT GC9A01A
                                      │ DO (Libre)         │
                                      └────────────────────┘
 </pre>
-<img src="../Imagenes%20Evidencias/circuito-compacto.jpg" alt="Circuito compacto sin protoboard" width="350"/>
+
+<img src="Imagenes%20Evidencias/circuito-compacto.jpg" alt="Circuito compacto sin protoboard" width="350"/>
 
 > [!WARNING]
 > **Lección importante sobre la protoboard:**  
@@ -88,11 +89,16 @@ Una vez que tengas tus dibujos listos, no los subas directamente como imágenes 
 2. Usa un convertidor en línea como [FileToCArray](https://notisrac.github.io/FileToCArray/) o `image2cpp`.
 3. Copia el arreglo de código hexadecimal (`C/C++ array`) generado y pégalo en tu código de Arduino IDE.
 
-### Paso 3: Corrección de formatos de color y tamaño en la pantalla
-Al cargar el código para mostrar las imágenes en la pantalla circular, revisa estos detalles:
+### Paso 3: Ajuste de tamaño (100×100 a 240×240 px), memoria y color
+Al cargar las ilustraciones en la pantalla circular, tuvimos que realizar tres ajustes técnicos fundamentales:
 
-* 📐 **Ajuste de tamaño:** Adapta las dimensiones del dibujo en el código para que encaje centrado en la pantalla circular.
-* 🎨 **Formato de color (RGB vs BGR):** Verifica en el código qué formato de color utiliza la librería de tu pantalla. Si no lo configuras bien, los colores se verán invertidos (por ejemplo, los tonos café podrían verse de color azul). Cambia el formato de color en la librería hasta que los tonos coincidan con tu dibujo original.
+- 📐 **De 100×100 a 240×240 píxeles:** Nosotras diseñamos originalmente las caritas en **100 × 100 px**, pero la pantalla circular GC9A01A tiene una resolución nativa de **240 × 240 px**. Antes de convertir los dibujos a código, debes redimensionarlos a **240 × 240 px** para que cubran toda la pantalla sin verse pequeños ni descentrados.
+- 💾 **Ampliar la memoria en Arduino IDE (*Partition Scheme*):** Al escalar las imágenes de 100×100 a **240×240 px**, los arreglos de código (`C/C++ array`) ocupan mucha más memoria y superan el límite que Arduino IDE asigna por defecto al programa (arrojando el error *"Sketch too big"*). Para que la ESP32-S3 pueda almacenar toda la información:
+  1. En Arduino IDE, ve al menú superior **Herramientas** (*Tools*).
+  2. Busca la opción **Partition Scheme** (*Esquema de partición*).
+  3. Cámbiala de la opción por defecto a **Huge APP (3MB No OTA / 1MB SPIFFS)** *(o `No OTA (2MB APP / 2MB SPIFFS)`)*.
+  4. Vuelve a compilar y subir el código: con esto amplías el espacio destinado al programa y la placa soportará todas las caritas sin problemas.
+- 🎨 **Formato de color (RGB vs BGR):** Verifica en el código qué formato de color utiliza la librería de tu pantalla. Si no lo configuras bien, los colores se verán invertidos (por ejemplo, los tonos café podrían verse de color azul). Cambia el formato de color en la librería hasta que los tonos coincidan con tu dibujo original.
 
 ---
 
@@ -114,9 +120,9 @@ Al cargar el código para mostrar las imágenes en la pantalla circular, revisa 
 
 Una vez que el circuito esté listo y funcionando correctamente, puedes guardar y proteger este artefacto de la manera que prefieras:
 
-* 📦 **Opción libre (Cualquier caja):** Puedes poner el circuito dentro de cualquier caja que tengas a mano en tu casa.
-* 🌻 **Opción impresión 3D (Recomendada):** Si prefieres algo a medida, puedes diseñar y crear tu propia impresión 3D para meter el artefacto (nosotras, por ejemplo, diseñamos una carcasa con forma de flor).
+- 📦 **Opción libre (Cualquier caja):** Puedes poner el circuito dentro de cualquier caja que tengas a mano en tu casa.
+- 🌻 **Opción impresión 3D (Recomendada):** Si prefieres algo a medida, puedes diseñar y crear tu propia impresión 3D para meter el artefacto (nosotras, por ejemplo, diseñamos una carcasa con forma de flor).
 
-[<img src="../Imagenes%20Evidencias/Evidencia%205.jpg" alt="Render de la carcasa con forma de flor" width="350"/>](https://github.com/user-attachments/assets/d262300f-91b0-463c-8c8f-ec3e6bab44b7)
+[<img src="Imagenes%20Evidencias/Evidencia%205.jpg" alt="Render de la carcasa con forma de flor" width="350"/>](https://github.com/user-attachments/assets/d262300f-91b0-463c-8c8f-ec3e6bab44b7)
 
 > 💡 **Requisito clave:** Lo único importante es que tu caja o carcasa deje visible la pantalla circular y permita que la sonda del sensor quede libre para clavarse en la tierra.
