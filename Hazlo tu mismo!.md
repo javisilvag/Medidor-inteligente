@@ -78,7 +78,7 @@ Ilustramos las caritas de los cuatro estados según el porcentaje de humedad pre
 
 | Seco (< 30%) | Óptimo (30% - 70%) | Alto (71% - 85%) | Exceso (> 85%) |
 |:---:|:---:|:---:|:---:|
-| <img src="../Imagenes%20Evidencias/carita-seco.png" width="100"/> | <img src="../Imagenes%20Evidencias/carita-optimo.png" width="100"/> | <img src="../Imagenes%20Evidencias/carita-alto.png" width="100"/> | <img src="../Imagenes%20Evidencias/carita-exceso.png" width="100"/> |
+| ![Seco](<Imagenes Evidencias/Pixelart triste.gif>) | ![Óptimo](<Imagenes Evidencias/Pixelart feliz.gif>) | ![Alto](<Imagenes Evidencias/Pixelart sorprendido.gif>) | ![Exceso](<Imagenes Evidencias/Pixelart dead.gif>) |
 | 😢 Triste | 😊 Sonriente | 😲 Sorprendida | 😵 Ojos en "X" |
 
 ### Paso 2: Convertir las imágenes a código C Array
