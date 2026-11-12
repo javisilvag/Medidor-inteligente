@@ -10,11 +10,22 @@
 
 ---
 
-### 👩‍💻 Equipo Flora
-| Integrante | Foto |
-|---|---|
-| Martinna Salazar | <img src="imagenes/S01/Foto-equipo-Marti.jpeg" alt="Martinna Salazar" width="150"/> |
-| Javiera Silva | <img src="imagenes/S01/Foto-Equipo-Javi.JPG" alt="Javiera Silva" width="150"/> |
+<h3>👩‍💻 Equipo Flora</h3>
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <img src="imagenes/S01/Foto-equipo-Marti.jpeg" width="200"/><br>
+        <b>Martinna Salazar</b>
+      </td>
+      <td align="center">
+        <img src="imagenes/S01/Foto-Equipo-Javi.JPG" width="200"/><br>
+        <b>Javiera Silva</b>
+      </td>
+    </tr>
+  </table>
+</div>
 
 ---
 
