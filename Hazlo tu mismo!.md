@@ -9,18 +9,18 @@ En esta guía te enseñamos cómo armar este dispositivo por tu cuenta, comparti
 
 ---
 
-## 🛠️ 1. Componentes y Conexiones del Hardware
+##  1. Componentes y Conexiones del Hardware
 
 Para que el dispositivo sea compacto y fácil de transportar, eliminamos la placa de pruebas (protoboard) y cambiamos la placa Arduino inicial por una **ESP32-S3 SuperMini**.
 
-### 🛒 Materiales necesarios
-- 🧠 **ESP32-S3 SuperMini** (Placa microcontroladora)
-- 📺 **GC9A01A** (Pantalla circular TFT de 240×240 px)
-- 🌾 **HD-38** (Sensor analógico de humedad de suelo)
-- 🔌 Cables jumper **Hembra - Hembra** (pantalla)
-- 🔌 Cables jumper **Hembra - Macho** (sensor)
+###  Materiales necesarios
+-  **ESP32-S3 SuperMini** (Placa microcontroladora)
+-  **GC9A01A** (Pantalla circular TFT de 240×240 px)
+-  **HD-38** (Sensor analógico de humedad de suelo)
+-  Cables jumper **Hembra - Hembra** (pantalla)
+-  Cables jumper **Hembra - Macho** (sensor)
 
-### 📌 Tablas de Conexiones (Pinout)
+###  Tablas de Conexiones (Pinout)
 
 #### Conexión Pantalla TFT GC9A01A ↔ ESP32-S3 SuperMini
 | Pin Pantalla TFT | Función / Descripción | Pin ESP32-S3 SuperMini | Tipo de Cable |
