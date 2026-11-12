@@ -62,7 +62,7 @@ ESP32-S3 SuperMini                  PANTALLA TFT GC9A01A
                                      └────────────────────┘
 </pre>
 
-<img src="Imagenes%20Evidencias/circuito-compacto.jpg" alt="Circuito compacto sin protoboard" width="350"/>
+<img src="Imagenes%20Evidencias/Evidencia%202.jpeg" alt="Circuito compacto sin protoboard" width="350"/>
 
 > [!WARNING]
 > **Lección importante sobre la protoboard:**  
@@ -70,7 +70,7 @@ ESP32-S3 SuperMini                  PANTALLA TFT GC9A01A
 
 ---
 
-## 🎨 2. Creación de la Interfaz Visual (Pixel Art a Código)
+##  2. Creación de la Interfaz Visual (Pixel Art a Código)
 
 Para que la pantalla muestre los estados de la planta de forma empática y visual, creamos dibujos propios que luego convertimos a código para incluir en la pantalla.
 
@@ -92,23 +92,23 @@ Una vez que tengas tus dibujos listos, no los subas directamente como imágenes 
 ### Paso 3: Ajuste de tamaño (100×100 a 240×240 px), memoria y color
 Al cargar las ilustraciones en la pantalla circular, tuvimos que realizar tres ajustes técnicos fundamentales:
 
-- 📐 **De 100×100 a 240×240 píxeles:** Nosotras diseñamos originalmente las caritas en **100 × 100 px**, pero la pantalla circular GC9A01A tiene una resolución nativa de **240 × 240 px**. Antes de convertir los dibujos a código, debes redimensionarlos a **240 × 240 px** para que cubran toda la pantalla sin verse pequeños ni descentrados.
-- 💾 **Ampliar la memoria en Arduino IDE (*Partition Scheme*):** Al escalar las imágenes de 100×100 a **240×240 px**, los arreglos de código (`C/C++ array`) ocupan mucha más memoria y superan el límite que Arduino IDE asigna por defecto al programa (arrojando el error *"Sketch too big"*). Para que la ESP32-S3 pueda almacenar toda la información:
+-  **De 100×100 a 240×240 píxeles:** Nosotras diseñamos originalmente las caritas en **100 × 100 px**, pero la pantalla circular GC9A01A tiene una resolución nativa de **240 × 240 px**. Antes de convertir los dibujos a código, debes redimensionarlos a **240 × 240 px** para que cubran toda la pantalla sin verse pequeños ni descentrados.
+-  **Ampliar la memoria en Arduino IDE (*Partition Scheme*):** Al escalar las imágenes de 100×100 a **240×240 px**, los arreglos de código (`C/C++ array`) ocupan mucha más memoria y superan el límite que Arduino IDE asigna por defecto al programa (arrojando el error *"Sketch too big"*). Para que la ESP32-S3 pueda almacenar toda la información:
   1. En Arduino IDE, ve al menú superior **Herramientas** (*Tools*).
   2. Busca la opción **Partition Scheme** (*Esquema de partición*).
   3. Cámbiala de la opción por defecto a **Huge APP (3MB No OTA / 1MB SPIFFS)** *(o `No OTA (2MB APP / 2MB SPIFFS)`)*.
   4. Vuelve a compilar y subir el código: con esto amplías el espacio destinado al programa y la placa soportará todas las caritas sin problemas.
-- 🎨 **Formato de color (RGB vs BGR):** Verifica en el código qué formato de color utiliza la librería de tu pantalla. Si no lo configuras bien, los colores se verán invertidos (por ejemplo, los tonos café podrían verse de color azul). Cambia el formato de color en la librería hasta que los tonos coincidan con tu dibujo original.
+-  **Formato de color (RGB vs BGR):** Verifica en el código qué formato de color utiliza la librería de tu pantalla. Si no lo configuras bien, los colores se verán invertidos (por ejemplo, los tonos café podrían verse de color azul). Cambia el formato de color en la librería hasta que los tonos coincidan con tu dibujo original.
 
 ---
 
-## 🧪 3. Pruebas de Código y Funcionamiento
+##  3. Pruebas de Código y Funcionamiento
 
 1. **Iteración de código:** Al momento de programar, prueba diferentes versiones del código de lectura. En nuestras pruebas nos pasó que algunos códigos hacían encender la pantalla pero el sensor de humedad no respondía; fuimos ajustando el código hasta lograr que la pantalla y el sensor leyeran y mostraran los datos en tiempo real simultáneamente.
 2. **Prueba en maceta:** Comprueba que al meter el sensor en la tierra, la pantalla cambie automáticamente entre las caritas en Pixel Art y el porcentaje numérico según los 4 rangos establecidos.
 
 > [!TIP]
-> 🎥 **Prueba inicial con Arduino (Prototipo 1):**  
+>  **Prueba inicial con Arduino (Prototipo 1):**  
 > Esta demostración corresponde al **Prototipo 1**, donde utilizamos una placa Arduino para comprobar la lectura del sensor y verificar que todos los materiales estuvieran en buen estado antes de realizar la migración definitiva a la ESP32-S3 SuperMini.
 > 
 > [![Ver video en Instagram](Imagenes%20Evidencias/Video%20demostracion.JPG)](https://www.instagram.com/reel/DeSw9m6N9T9/)  
@@ -116,18 +116,18 @@ Al cargar las ilustraciones en la pantalla circular, tuvimos que realizar tres a
 
 ---
 
-## 📦 4. Encapsulado del Dispositivo (Carcasa 3D)
+##  4. Encapsulado del Dispositivo (Carcasa 3D)
 
 Una vez que el circuito esté listo y funcionando correctamente, puedes guardar y proteger este artefacto de la manera que prefieras:
 
-- 📦 **Opción libre (Cualquier caja):** Puedes poner el circuito dentro de cualquier caja que tengas a mano en tu casa.
-- 🌻 **Opción impresión 3D (Recomendada):** Si prefieres algo a medida, puedes diseñar y crear tu propia impresión 3D para meter el artefacto (nosotras, por ejemplo, diseñamos una carcasa con forma de flor).
+-  **Opción libre (Cualquier caja):** Puedes poner el circuito dentro de cualquier caja que tengas a mano en tu casa.
+-  **Opción impresión 3D (Recomendada):** Si prefieres algo a medida, puedes diseñar y crear tu propia impresión 3D para meter el artefacto (nosotras, por ejemplo, diseñamos una carcasa con forma de flor).
 
 [<img src="Imagenes%20Evidencias/Evidencia%205.jpg" alt="Render de la carcasa con forma de flor" width="350"/>](https://github.com/user-attachments/assets/d262300f-91b0-463c-8c8f-ec3e6bab44b7)
 
-> 💡 **Requisito clave:** Lo único importante es que tu caja o carcasa deje visible la pantalla circular y permita que la sonda del sensor quede libre para clavarse en la tierra.
+>  **Requisito clave:** Lo único importante es que tu caja o carcasa deje visible la pantalla circular y permita que la sonda del sensor quede libre para clavarse en la tierra.
 
-## 💻 5. Código Fuente (Arduino Uno y ESP32-S3)
+##  5. Código Fuente (Arduino Uno y ESP32-S3)
 
 Aquí tienes los dos códigos que desarrollamos durante el proyecto: primero la versión de diagnóstico en **Arduino Uno** y luego el código definitivo en **ESP32-S3 SuperMini** con las animaciones en Pixel Art.
 
@@ -252,7 +252,7 @@ void actualizarPantalla(int humedad) {
 }
 </pre>
 
-### 💻 Código ESP32
+###  Código ESP32
 Este es nuestro código definitivo para la **ESP32-S3 SuperMini**. En lugar de imágenes estáticas, diseñamos animaciones de **3 fotogramas (*frames*)** por cada estado emocional (`seco`, `optimo`, `alto` y `exceso`) que se reproducen cada `200 ms` mediante renderizado ultra rápido por SPI (`writePixels`).
 
 > [!NOTE]
