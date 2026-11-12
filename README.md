@@ -10,7 +10,7 @@
 
 ---
 
-<h3>👩‍💻 Equipo Flora</h3>
+<h3> Equipo Flora</h3>
 
 <div align="center">
   <table>
@@ -39,7 +39,7 @@
 
 ---
 
-### 🎭 El Lenguaje de tu Planta
+###  El Lenguaje de tu Planta
 
 | Estado | Rango | ¿Qué te dice la pantalla? | Reacción |
 |:---:|:---:|:---:|:---:|
@@ -50,30 +50,30 @@
 
 ---
 
-### 📖 Sobre el Proyecto (Haz clic para desplegar)
+###  Sobre el Proyecto (Haz clic para desplegar)
 
 <details>
-<summary><b>🔍 Desafío y Problemática Inicial</b></summary>
+<summary><b> Desafío y Problemática Inicial</b></summary>
 <br>
 Existe una brecha de comunicación entre las personas y sus plantas: a simple vista es difícil conocer el estado hídrico real de la tierra. Nuestro desafío fue transformar esa información técnica en una <b>interfaz empática y cercana</b> dentro del contexto doméstico, fortaleciendo el vínculo afectivo con la naturaleza en el hogar.
 </details>
 
 <details>
-<summary><b>🎯 Objetivo y Tecnología</b></summary>
+<summary><b> Objetivo y Tecnología</b></summary>
 <br>
 Desarrollar un dispositivo Low Tech de acceso libre integrando un sensor analógico (<b>HD-38</b>), un microcontrolador (<b>ESP32-S3 SuperMini</b>) y una pantalla circular (<b>TFT GC9A01A</b>) dentro de una carcasa impresa en 3D con forma de flor, dejando todos los manuales y códigos abiertos en GitHub.
 </details>
 
 <details>
-<summary><b>🏡 Usuarios y Contexto</b></summary>
+<summary><b> Usuarios y Contexto</b></summary>
 <br>
 El proyecto está pensado principalmente para cualquier persona que se encuentre en su hogar y desee cuidar su flora, buscando ir más allá del simple riego para establecer una relación afectiva y de empatía con sus plantas. El problema se aborda en el contexto doméstico y cotidiano, fomentando a la vez una cultura <i>"Hazlo tú mismo" (DIY)</i>, donde la tecnología de bajo costo y las instrucciones abiertas permiten a los usuarios involucrarse activamente en la creación de herramientas para el cuidado de su entorno.
 </details>
 ---
 
-### 🧭 Navegación del Repositorio
-* 👉 **[Guía: ¡Hazlo tú mismo!](Hazlo%20tu%20mismo!.md)**
-* 📑 **Índice de la Bitácora:**
+###  Navegación del Repositorio
+*  **[Guía: ¡Hazlo tú mismo!](Hazlo%20tu%20mismo!.md)**
+*  **Índice de la Bitácora:**
 - [S01 - Entrega 01](Bitacora/S01.md)
 - [S02 - Entrega 02](Bitacora/S02.md)
 - [S03 - Entrega 03](Bitacora/S03.md)
