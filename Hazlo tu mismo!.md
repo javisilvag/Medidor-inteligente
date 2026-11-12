@@ -265,7 +265,7 @@ Este es nuestro código definitivo para la **ESP32-S3 SuperMini**. En lugar de i
 <summary><b>🌸 Ver Código ESP32-S3 SuperMini (.ino)</b></summary>
 <br>
 
-```cpp
+<pre>
 #include <SPI.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_GC9A01A.h>
@@ -393,3 +393,17 @@ void loop() {
 
   yield();
 }
+</pre>
+
+---
+
+### 🖼️ Recursos Gráficos: Fotogramas (Frames) para el Código ESP32
+
+Si quieres replicar las animaciones en tu propia placa, descarga los **3 fotogramas individuales** de cada estado emocional desde sus respectivas carpetas y conviértelos a arreglos hexadecimales (`C/C++ array`) para pegarlos en el código:
+
+| Estado de la Planta | Rango de Humedad | Arreglos en el Código | Acceso Directo a los Archivos |
+| :--- | :---: | :--- | :--- |
+| 😢 **Seco** | `< 20%` | `seco1`, `seco2`, `seco3` | [📂 Abrir carpeta **Triste**](Imagenes%20Evidencias/Imagenes%20Gif/Triste) |
+| 😊 **Óptimo** | `20% - 49%` | `optimo1`, `optimo2`, `optimo3` | [📂 Abrir carpeta **Feliz**](Imagenes%20Evidencias/Imagenes%20Gif/Feliz) |
+| 😲 **Alto** | `50% - 74%` | `alto1`, `alto2`, `alto3` | [📂 Abrir carpeta **Sorprendido**](Imagenes%20Evidencias/Imagenes%20Gif/Sorprendido) |
+| 😵 **Exceso** | `≥ 75%` | `exceso1`, `exceso2`, `exceso3` | [📂 Abrir carpeta **Dead**](Imagenes%20Evidencias/Imagenes%20Gif/Dead) |
