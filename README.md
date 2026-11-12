@@ -69,6 +69,7 @@ Desarrollar un dispositivo Low Tech de acceso libre integrando un sensor analóg
 <br>
 El proyecto está pensado principalmente para cualquier persona que se encuentre en su hogar y desee cuidar su flora, buscando ir más allá del simple riego para establecer una relación afectiva y de empatía con sus plantas. El problema se aborda en el contexto doméstico y cotidiano, fomentando a la vez una cultura <i>"Hazlo tú mismo" (DIY)</i>, donde la tecnología de bajo costo y las instrucciones abiertas permiten a los usuarios involucrarse activamente en la creación de herramientas para el cuidado de su entorno.
 </details>
+
 ---
 
 ###  Navegación del Repositorio
