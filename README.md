@@ -1,36 +1,68 @@
-# Medidor Inteligente
+<div align="center">
 
-## Dispositivos lowtech e interfaces interactivas
+# 🌸 Medidor Inteligente | Equipo Flora
+**Dispositivos Low Tech e Interfaces Interactivas**
 
-**Equipo:** Flora  
-**Problemática:** Desconexión afectiva y cuidado invisible de las plantas  
+[![Open Source](https://img.shields.io/badge/Open_Source-Hazlo_Tú_Mismo-ff69b4?style=for-the-badge)](Hazlo%20tu%20mismo!.md)
+[![ESP32-S3](https://img.shields.io/badge/Cerebro-ESP32--S3_SuperMini-000000?style=for-the-badge&logo=espressif)](Hazlo%20tu%20mismo!.md#️-1-componentes-y-conexiones-del-hardware)
 
-## Descripción
+</div>
 
-Este proyecto nace a partir de la brecha de comunicación que existe entre las personas y sus plantas. A simple vista, es difícil conocer los requerimientos internos y el estado hídrico real de la tierra, lo que dificulta brindarle los cuidados exactos que necesita para estar sana. A partir de esta situación, buscamos crear un dispositivo interactivo con forma de flor que funcione como un traductor emocional: midiendo la humedad de la tierra y transformando esa información en gestos comprensibles (emojis). Esto permite fortalecer la relación afectiva entre el usuario y su flora. Además, el proyecto tiene un enfoque Open Source (código abierto), diseñado para que cualquier persona pueda fabricarlo desde su casa.
+---
 
-## Equipo
-
+### 👩‍💻 Equipo Flora
 | Integrante | Foto |
 |---|---|
 | Martinna Salazar | <img src="imagenes/S01/Foto-equipo-Marti.jpeg" alt="Martinna Salazar" width="150"/> |
 | Javiera Silva | <img src="imagenes/S01/Foto-Equipo-Javi.JPG" alt="Javiera Silva" width="150"/> |
-## Desafío o problemática inicial
 
-Nuestro desafío surge de la dificultad del usuario para entender las verdaderas necesidades de sus plantas, limitándose a un riego funcional sin saber qué es lo que realmente requiere la tierra. Nos interesa explorar cómo la tecnología puede ayudar a entregar esta información (los niveles de humedad) no como un dato técnico, frío o numérico, sino mediante una interfaz empática y fácil de interpretar, generando una conexión más cercana e íntima con la naturaleza dentro del hogar.
+---
 
-## Objetivo
+### 🪴 El Problema vs. Nuestra Solución
 
-Explorar y desarrollar un dispositivo Low Tech capaz de medir la humedad de la tierra y comunicar su estado al usuario mediante emociones visuales. Buscamos integrar un sensor analógico (HD-38), un microcontrolador (ESP32) y una pantalla TFT circular dentro de una carcasa impresa en 3D con forma de flor. El sistema traducirá los datos en cuatro estados (seco, óptimo, alto y exceso) usando caritas interactivas y porcentajes. El objetivo final es definir una propuesta de acceso libre, cuyos códigos, materiales y manuales de ensamblaje estén disponibles en GitHub para democratizar su construcción.
+| 🥀 El riego tradicional (Antes) | 🌸 Con el Medidor Flora (Ahora) |
+| :--- | :--- |
+| Regar "al ojo" sin saber qué pasa bajo la tierra. | Lectura precisa en tiempo real con sensor **HD-38**. |
+| Datos técnicos fríos y difíciles de interpretar. | **Traductor emocional:** 4 caritas en Pixel Art que te dicen cómo se siente. |
+| Dispositivos costosos y cerrados. | Arquitectura **Low Tech & Open Source** replicable en casa. |
 
-## Usuarios y contexto
+---
 
-El proyecto está pensado principalmente para cualquier persona que se encuentre en su hogar y desee cuidar su flora, buscando ir más allá del simple riego para establecer una relación afectiva y de empatía con sus plantas. El problema se aborda en el contexto doméstico y cotidiano, fomentando a la vez una cultura "Hazlo tú mismo" (DIY), donde la tecnología de bajo costo y las instrucciones abiertas permiten a los usuarios involucrarse activamente en la creación de herramientas para el cuidado de su entorno.
+### 🎭 El Lenguaje de tu Planta
 
-## Índice de la bitácora
+| Estado | Rango | ¿Qué te dice la pantalla? | Reacción |
+|:---:|:---:|:---:|:---:|
+| **Seco** | `< 30%` | *"¡Necesito agua urgente!"* | <img src="Imagenes%20Evidencias/Pixelart%20triste.gif" width="70"/> |
+| **Óptimo** | `30% - 70%` | *"¡Estoy en mi mejor momento!"* | <img src="Imagenes%20Evidencias/Pixelart%20feliz.gif" width="70"/> |
+| **Alto** | `71% - 85%` | *"¡Cuidado, ya tomé suficiente!"* | <img src="Imagenes%20Evidencias/Pixelart%20sorprendido.gif" width="70"/> |
+| **Exceso** | `> 85%` | *"¡Auxilio, exceso de agua!"* | <img src="Imagenes%20Evidencias/Pixelart%20dead.gif" width="70"/> |
 
-## Índice de la bitácora
+---
 
+### 📖 Sobre el Proyecto (Haz clic para desplegar)
+
+<details>
+<summary><b>🔍 Desafío y Problemática Inicial</b></summary>
+<br>
+Existe una brecha de comunicación entre las personas y sus plantas: a simple vista es difícil conocer el estado hídrico real de la tierra. Nuestro desafío fue transformar esa información técnica en una <b>interfaz empática y cercana</b> dentro del contexto doméstico, fortaleciendo el vínculo afectivo con la naturaleza en el hogar.
+</details>
+
+<details>
+<summary><b>🎯 Objetivo y Tecnología</b></summary>
+<br>
+Desarrollar un dispositivo Low Tech de acceso libre integrando un sensor analógico (<b>HD-38</b>), un microcontrolador (<b>ESP32-S3 SuperMini</b>) y una pantalla circular (<b>TFT GC9A01A</b>) dentro de una carcasa impresa en 3D con forma de flor, dejando todos los manuales y códigos abiertos en GitHub.
+</details>
+
+<details>
+<summary><b>🏡 Usuarios y Contexto</b></summary>
+<br>
+Pensado para cualquier persona que quiera cuidar su flora doméstica más allá del riego mecánico, fomentando la cultura <i>"Hazlo tú mismo" (DIY)</i> mediante herramientas de bajo costo.
+</details>
+---
+
+### 🧭 Navegación del Repositorio
+* 👉 **[Guía: ¡Hazlo tú mismo!](Hazlo%20tu%20mismo!.md)**
+* 📑 **Índice de la Bitácora:**
 - [S01 - Entrega 01](Bitacora/S01.md)
 - [S02 - Entrega 02](Bitacora/S02.md)
 - [S03 - Entrega 03](Bitacora/S03.md)
