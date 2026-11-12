@@ -132,7 +132,7 @@ Una vez que el circuito esté listo y funcionando correctamente, puedes guardar 
 Aquí tienes los dos códigos que desarrollamos durante el proyecto: primero la versión de diagnóstico en **Arduino Uno** y luego el código definitivo en **ESP32-S3 SuperMini** con las animaciones en Pixel Art.
 
 <details>
-<summary><b>🧪 Ver Código 1: Prototipo 1 en Arduino Uno (Calibración, textos y barra de nivel)</b></summary>
+<summary><b> Ver Código 1: Prototipo 1 en Arduino Uno (Calibración, textos y barra de nivel)</b></summary>
 <br>
 
 En esta primera etapa conectamos el sensor **HD-38** y la pantalla circular **GC9A01A** a una placa **Arduino Uno**. Como la memoria del Arduino Uno no alcanza para almacenar imágenes pesadas en alta resolución, diseñamos una interfaz inicial basada en porcentajes, textos de estado con colores (`BAJO`, `OPTIMO`, `ALTO`, `EXCESO`) y una barra de progreso dinámica, calibrando el sensor entre `1023` (seco) y `240` (saturado en agua).
@@ -397,7 +397,7 @@ void loop() {
 
 ---
 
-### 🖼️ Recursos Gráficos: Fotogramas (Frames) para el Código ESP32
+###  Recursos Gráficos: Fotogramas (Frames) para el Código ESP32
 
 Si quieres replicar las animaciones en tu propia placa, descarga los **3 fotogramas individuales** de cada estado emocional desde sus respectivas carpetas y conviértelos a arreglos hexadecimales (`C/C++ array`) para pegarlos en el código:
 
