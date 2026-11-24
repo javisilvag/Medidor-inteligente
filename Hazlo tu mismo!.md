@@ -61,7 +61,20 @@ ESP32-S3 SuperMini                  PANTALLA TFT GC9A01A
                                      │ DO (Libre)         │
                                      └────────────────────┘
 </pre>
+## 🔋 Alimentación Portátil (Sistema de Batería)
 
+Para que **Flora** funcione de forma autónoma sin depender de un computador, se integra un módulo de carga y elevación de voltaje a **5V** conectado al puerto **USB-C** de la **ESP32-S3 SuperMini**, manteniendo intactas las conexiones de la pantalla y el sensor.
+
+### Componentes adicionales
+* **Batería:** Celda recargable de litio **18650 3.7V** (1800 mAh o 2600 mAh).
+* **Portapilas:** Soporte para **1 celda 18650** con cables rojo (`+`) y negro (`-`).
+* **Módulo de carga y elevación (Step-Up 5V):** Placa cargadora con pantalla de porcentaje y salida regulada **USB-A 5V** (entrada de carga USB-C / Micro-USB).
+* **Cable de alimentación:** Cable corto **USB-A a USB-C**.
+<pre>
+### Esquema de conexión
+
+[Batería 18650] ──▶ [Portapilas] ──▶ [Módulo Cargador/Boost 5V (B+ / B-)] ══(Cable USB)══▶ [Puerto USB-C ESP32-S3 SuperMini]
+  </pre>
 <img src="Imagenes%20Evidencias/Evidencia%202.jpeg" alt="Circuito compacto sin protoboard" width="350"/>
 
 > [!WARNING]
